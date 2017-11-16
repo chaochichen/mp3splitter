@@ -8,7 +8,7 @@ mp3splitter.cpp
 input.txt
 
 ## Build
-g++ mp3splitter.cpp
+g++ -std=c++11 mp3splitter.cpp
 
 ## Run
 ./a.out input.txt input.mp3 " - - "
