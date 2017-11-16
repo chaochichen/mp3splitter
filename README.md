@@ -1,14 +1,19 @@
 # mp3splitter
 
-main source file: mp3splitter.cpp
-sample input text: input.txt
+## main source file
+mp3splitter.cpp
 
-Build: g++ mp3splitter.cpp
+## sample input text
+input.txt
 
-Run: ./a.out input.txt input.mp3 " - - "
+## Build
+g++ mp3splitter.cpp
 
-Result:
+## Run
+./a.out input.txt input.mp3 " - - "
 
+##Result
+<pre>
 ffmpeg -i input.mp3 -acodec copy -ss 00:00 -t 182 -metadata Title="This Is What You Came For" -metadata Artist="Michelle Simonal" "This Is What You Came For.mp3"
 ffmpeg -i input.mp3 -acodec copy -ss 03:02 -t 175 -metadata Title="Get the Party Started" -metadata Artist="Stella Starlight Trio" "Get the Party Started.mp3"
 ffmpeg -i input.mp3 -acodec copy -ss 05:57 -t 321 -metadata Title="When We Were Young" -metadata Artist="Michelle Simonal" "When We Were Young.mp3"
@@ -30,4 +35,4 @@ ffmpeg -i input.mp3 -acodec copy -ss 01:06:46 -t 246 -metadata Title="Let Her Go
 ffmpeg -i input.mp3 -acodec copy -ss 01:10:52 -t 243 -metadata Title="West End Girls" -metadata Artist="Ituana" "West End Girls.mp3"
 ffmpeg -i input.mp3 -acodec copy -ss 01:14:55 -t 223 -metadata Title="Carlito's Way" -metadata Artist="Von Mondo" "Carlito's Way.mp3"
 ffmpeg -i input.mp3 -acodec copy -ss 01:18:38 -metadata Title="Satellite of Love" -metadata Artist="Anakelly" "Satellite of Love.mp3"
-
+</pre>
