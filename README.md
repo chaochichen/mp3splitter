@@ -1,4 +1,5 @@
 # mp3splitter
+Pre-processor for splitting a long mp3 song downloaded from Youtube into individual mp3 files with the help of ffmpeg.
 
 ## main source file
 mp3splitter.cpp
@@ -12,7 +13,7 @@ g++ mp3splitter.cpp
 ## Run
 ./a.out input.txt input.mp3 " - - "
 
-##Result
+## Result
 <pre>
 ffmpeg -i input.mp3 -acodec copy -ss 00:00 -t 182 -metadata Title="This Is What You Came For" -metadata Artist="Michelle Simonal" "This Is What You Came For.mp3"
 ffmpeg -i input.mp3 -acodec copy -ss 03:02 -t 175 -metadata Title="Get the Party Started" -metadata Artist="Stella Starlight Trio" "Get the Party Started.mp3"
