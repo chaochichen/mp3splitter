@@ -81,16 +81,17 @@ int main(int argc, char**argv)
     while (std::getline(infile, line))
     {
         vector<string> s = split(line, delimiter);
+        size_t size = s.size();
         if (ts.size() > 0)
         {
-            string nextTs = s[3];
+            string nextTs = s[size-1];
             cout << "ffmpeg -i " << mp3file << " -acodec copy -ss " << ts
                 << " -t " << toSeconds(nextTs) - toSeconds(ts)
                 << " -metadata Title=\"" << title << "\" -metadata Artist=\"" << artist << "\" \"" << title << ".mp3\"" << endl;
         }
-        title = s[1];
-        artist = s[2];
-        ts = s[3];
+        title = s[size-3];
+        artist = s[size-2];
+        ts = s[size-1];
     }
     cout << "ffmpeg -i " << mp3file << " -acodec copy -ss " << ts
         << " -metadata Title=\"" << title << "\" -metadata Artist=\"" << artist << "\" \"" << title << ".mp3\"" << endl;
