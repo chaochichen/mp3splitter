@@ -76,7 +76,15 @@ static std::string& buildcmd(std::string& retVal,
                 const std::string& albumTitle, 
                 const std::string& albumArt)
 {
-    retVal = "ffmpeg -i " + mp3file;
+    retVal = "ffmpeg -ss " + ts;
+    if (nextTs.size() > 0)
+    {
+        char buffer[10];
+        sprintf(buffer, "%d", toSeconds(nextTs) - toSeconds(ts));
+        retVal += " -t ";
+        retVal += buffer;
+    }
+    retVal += (" -i " + mp3file);
     if (albumArt.size() > 0)
     {
         retVal += (" -i " + albumArt + " -map 0:0 -map 1:0 -c copy -id3v2_version 3 -metadata:s:v title=\"Album cover\" -metadata:s:v comment=\"Cover (Front)\" ");
@@ -84,14 +92,6 @@ static std::string& buildcmd(std::string& retVal,
     else
     {
         retVal += " -acodec copy";
-    }
-    retVal += (" -ss "+ts);
-    if (nextTs.size() > 0)
-    {
-        char buffer[10];
-        sprintf(buffer, "%d", toSeconds(nextTs) - toSeconds(ts));
-        retVal += " -t ";
-        retVal += buffer;
     }
     retVal += (" -metadata Title=\"" + title + "\" -metadata Artist=\"" + artist +"\"");
     if (albumTitle.size() > 0)
